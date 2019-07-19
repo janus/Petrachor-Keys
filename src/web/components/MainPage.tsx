@@ -24,10 +24,12 @@ export class MainPage extends React.Component<{}, IMainPageState> {
         return (
             <Container>
                 <Row>
+                    <br />
                     <Col xs={12}>
                         <Directive />
                     </Col>
                 </Row>
+                <br />
                 <Row>
                     <Col xs={12} >
                         <SecurityMessage />
@@ -38,6 +40,7 @@ export class MainPage extends React.Component<{}, IMainPageState> {
                         <GenerateKeys updateFn={this.updateKeys} />
                     </Col>
                 </Row>
+                <br />
                 <Row>
                     <Col>
                         <SaveKeys {...this.state} />

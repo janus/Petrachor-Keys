@@ -44,12 +44,11 @@ var config = (env, options) => [
                 new MiniCssExtractPlugin(),
                 new HtmlWebpackPlugin({
                     template: "./src/template.html",
-                    inject: true,
+                    hash: true,
                     filename: "main.html",
-                    appMountId: 'app',
                 })
             ] : [new webpack.HotModuleReplacementPlugin()],
-        optimization: {
+     /**    optimization: {
             runtimeChunk: 'single',
             splitChunks: {
             cacheGroups: {
@@ -60,7 +59,7 @@ var config = (env, options) => [
                 }
             }
             }
-        }
+        } */
     },
     {
         name: "server",

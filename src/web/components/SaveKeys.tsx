@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button, Card, Col, Row} from "react-bootstrap";
+import { Button, Card, Col, Form, Row} from "react-bootstrap";
 import * as ReactDom from "react-dom";
 import { ISaveKeysProps } from "../../definitions/setTypes";
 
@@ -13,7 +13,7 @@ export class SaveKeys extends React.Component<ISaveKeysProps, {}> {
     public onClick() {
         // Save keys
         const textToWrite = JSON.stringify(this.props);
-        const filename = `petrachor_${Date.now()}.json`;
+        const filename = `petrachor_keys_${Date.now()}.json`;
 
         this.saveTextAsFile(textToWrite  , filename);
     }
@@ -22,27 +22,36 @@ export class SaveKeys extends React.Component<ISaveKeysProps, {}> {
         return (
             <Card>
                 <Card.Header>
-                    Generate BL12_138 keys for Petra blockchain
+                    Generate BL12_381 keys for Petra blockchain
                 </Card.Header>
                 <Card.Body>
-                    <Row>
-                        <Col xs={6}>
-                            <div>
-                                Private Key:
-                                <textarea  readOnly={true} rows={12}>{this.props.privateKey} </textarea>
-                            </div>
-                        </Col>
-                        <Col xs={6}>
-                            <div>
-                                Public Key:
-                                <textarea  readOnly={true} rows={12}>{this.props.publicKey} </textarea>
-                            </div>
-                        </Col>
-                    </Row>
+                    <Form>
+                        <Form.Row>
+                            <Form.Group as={Col} >
+                            <Form.Label>Private Key:</Form.Label>
+                            <Form.Control
+                                type="textarea"
+                                style={{height: 100}}
+                                readOnly={true}
+                                defaultValue={this.props.privateKey}
+                            />
+                            </Form.Group>
+
+                            <Form.Group as={Col} >
+                            <Form.Label>Public Key:</Form.Label>
+                            <Form.Control
+                                type="textarea"
+                                style={{height: 100}}
+                                readOnly={true}
+                                defaultValue={this.props.publicKey}
+                            />
+                            </Form.Group>
+                        </Form.Row>
+                    </Form>
                 </Card.Body>
                 <Card.Footer>
                     <Button onClick={this.onClick}>
-                        <TiCancel /> Save Keys
+                        Save Keys
                     </Button>
                 </Card.Footer>
             </Card>
